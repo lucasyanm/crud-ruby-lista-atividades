@@ -1,4 +1,9 @@
 class ActivitiesController < ApplicationController
+    skip_before_action :verify_authenticity_token
+    
+    def index
+    end
+    
     def create
         @activity = Activity.new(activity_params)
 
@@ -6,6 +11,7 @@ class ActivitiesController < ApplicationController
             render json: { success: true }, status: :success
         else
             render json: { success: false }, status: :bad_request
+        end
     end
 
     def delete

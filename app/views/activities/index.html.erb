@@ -1,0 +1,24 @@
+<div id="form-create-activity">
+    <h2>Nova Atividade</h2>
+    <input name="title" type="text">
+    <input name="date" type="date">
+    <textarea name="description"></textarea>
+    <button onclick="createActivity()">Criar</button>
+<div>
+
+<script type="text/javascript">
+    alert("INFERNO");
+
+    function createActivity() {
+        var url = '<%= activities_create_url %>';
+
+        let name = document.getElementByName('title');
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            console.log(this);
+        }
+        xhttp.open('POST', url);
+        xhttp.send();
+    }
+</script>
