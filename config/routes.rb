@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
+  resources :activities
+  
   get '/',
     to: 'activities#index',
     as: :activities_index
-
-  post '/activities/create',
-    to: 'activities#create',
-    as: :activities_create
 end

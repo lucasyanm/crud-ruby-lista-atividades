@@ -1,37 +1,35 @@
 <div id="form-create-activity">
-    <h2>Nova Atividade</h2>
-    <input name="title" type="text">
-    <input name="date" type="date">
-    <textarea name="description"></textarea>
-    <button onclick="createActivity()">Criar</button>
+    <%= form_for @activity do |a| %>
+        <h2> Nova atividade </h2>
+        <%= a.text_field :name %>
+        <%= a.text_field :date, 
+            type: "date" %>
+        <%= a.text_area :description, 
+            style: "resize: vertical" %>
+
+        <%= a.submit 'Criar Atividade' %>
+    <% end %>
 <div>
 
+<div id="list-activities">
+    <%= @activities.find_each do |activity| %>
+        <div>
+            <span> <%= activity.name %> </span>
+            <span> <%= activity.date.strftime("%d/%m/%Y") %> </span>
+            <span> <%= activity.description %> </span>
+
+            <%= button_to 'Apagar', 
+                activity, 
+                method: :delete, 
+                :onclick => "return confirm('Tem certeza que quer deletar esta atividade?')" %>
+        </div>
+    <% end %>
+</div>
+
 <script type="text/javascript">
-    alert("INFERNO");
+    const alertMessage = '<%= @alert %>';
+    if(alertMessage != "")
+        alert(alertMessage);
 
-    function createActivity() {
-        let inputName = document.querySelector('input[name="title"]');
-        let inputDate = document.querySelector('input[name="date"]');
-        let inputDescription = document.querySelector('textarea[name="description"]');
-
-        (async () => {
-            const rawResponse = await fetch('<%= activities_create_url %>', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    activity: {
-                        name: inputName.value,
-                        date: inputDate.value,
-                        description: inputDescription.value
-                    }
-                })
-            });
-            const content = await rawResponse.json();
-
-            console.log(content);
-        })();
-    }
+    
 </script>
