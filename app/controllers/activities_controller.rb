@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
     skip_before_action :verify_authenticity_token
-    
+
     def index
     end
     
@@ -8,9 +8,9 @@ class ActivitiesController < ApplicationController
         @activity = Activity.new(activity_params)
 
         if @activity.save
-            render json: { success: true }, status: :success
+            render json: { success: true }, status: :ok
         else
-            render json: { success: false }, status: :bad_request
+            render json: { success: false, params: activity_params }, status: :bad_request
         end
     end
 

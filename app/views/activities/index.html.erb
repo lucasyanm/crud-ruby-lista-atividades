@@ -10,15 +10,28 @@
     alert("INFERNO");
 
     function createActivity() {
-        var url = '<%= activities_create_url %>';
+        let inputName = document.querySelector('input[name="title"]');
+        let inputDate = document.querySelector('input[name="date"]');
+        let inputDescription = document.querySelector('textarea[name="description"]');
 
-        let name = document.getElementByName('title');
+        (async () => {
+            const rawResponse = await fetch('<%= activities_create_url %>', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    activity: {
+                        name: inputName.value,
+                        date: inputDate.value,
+                        description: inputDescription.value
+                    }
+                })
+            });
+            const content = await rawResponse.json();
 
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function () {
-            console.log(this);
-        }
-        xhttp.open('POST', url);
-        xhttp.send();
+            console.log(content);
+        })();
     }
 </script>
