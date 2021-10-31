@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Activities' List</title>
+    <title>Activities List</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <section id="menu">
+      <%= render "shared/menu" %>
+    </section>
+
+    <section id="content">
+      <%= yield %>
+    </section>
+
+    <section id="footer">
+      <footer>
+        <%= render "shared/footer" %>
+      </footer>
+    </section>
+      
   </body>
+  
 </html>

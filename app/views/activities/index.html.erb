@@ -1,4 +1,11 @@
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 <div id="form-create-activity">
+    <% if flash[:msg] %>
+        <script>
+            alert('<%= flash[:msg] %>');
+        </script>
+    <% end %>
     <%= form_for @activity do |a| %>
         <h2> Nova atividade </h2>
         <%= a.text_field :name %>
@@ -26,10 +33,3 @@
     <% end %>
 </div>
 
-<script type="text/javascript">
-    const alertMessage = '<%= @alert %>';
-    if(alertMessage != "")
-        alert(alertMessage);
-
-    
-</script>
