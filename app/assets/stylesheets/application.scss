@@ -14,4 +14,142 @@
  *= require_self
  */
 
- @import "bootstrap/scss/bootstrap"
+ @import "bootstrap/scss/bootstrap";
+
+* {
+    font-family: 'Open Sans';
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    display: flexbox;
+}
+
+h3 {
+    min-width: 300px;
+}
+
+section#footer {
+    display: flex;
+    background-color: #1f2022;
+    justify-content: center;
+    height: 80px;
+    align-items: center;
+}
+
+section#footer p {
+    font-size: 26px;
+    color: #fff;
+}
+
+section#content {
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section#content #list-activities {
+    width: 1400px;
+    margin: 100px 20px;
+    margin-top: 30px;
+    margin-bottom: 120px;
+}
+
+section#content #list-activities td,
+section#content #list-activities th {
+    
+    border: 1px solid #1f2022;
+    padding: 8px;
+}
+
+section#content #list-activities th {
+    text-transform: uppercase;
+    font-size: 18px;
+
+}
+
+section#content #list-activities tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+section#content #list-activities .activity-item p {
+    width: 50px;
+    margin: 10px;
+}
+
+section#content #form-create-activity {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+section#content #form-create-activity form {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+section#content #form-create-activity form input,
+section#content #form-create-activity form textarea {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    min-width: 50px;
+}
+
+section#content form input[type=submit] {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;  
+    text-align: center;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;  
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 20%;
+} 
+
+section#content form input[type=submit]:disabled {
+  cursor: default;
+}
+
+section#content form input[type=submit]:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+section#content #list-activities form input[type=submit] {
+    width: 100px;
+}
+
+section#menu {
+    background: #979fc7;
+    height: 80px;
+}
+
+section#menu h2 a {
+    font-weight: 500;
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+section#menu {
+    display: flex;
+    align-items: center;
+}

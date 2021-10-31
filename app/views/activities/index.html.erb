@@ -1,35 +1,42 @@
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+<% if flash[:msg] %>
+    <script>
+        alert('<%= flash[:msg] %>');
+    </script>
+<% end %>
 <div id="form-create-activity">
-    <% if flash[:msg] %>
-        <script>
-            alert('<%= flash[:msg] %>');
-        </script>
-    <% end %>
     <%= form_for @activity do |a| %>
-        <h2> Nova atividade </h2>
+        <h3> Criar nova atividade </h3>
         <%= a.text_field :name %>
         <%= a.text_field :date, 
             type: "date" %>
         <%= a.text_area :description, 
-            style: "resize: vertical" %>
+            style: "resize: none" %>
 
         <%= a.submit 'Criar Atividade' %>
     <% end %>
-<div>
-
-<div id="list-activities">
-    <%= @activities.find_each do |activity| %>
-        <div>
-            <span> <%= activity.name %> </span>
-            <span> <%= activity.date.strftime("%d/%m/%Y") %> </span>
-            <span> <%= activity.description %> </span>
-
-            <%= button_to 'Apagar', 
-                activity, 
-                method: :delete, 
-                :onclick => "return confirm('Tem certeza que quer deletar esta atividade?')" %>
-        </div>
-    <% end %>
 </div>
+
+<table id="list-activities">
+    <tr>
+        <th>Nome da atividade</th>
+        <th>Data</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+    </tr>
+    <%= @activities.find_each do |activity| %>
+        <tr class="activity-item">
+            <td> <%= activity.name %> </td>
+            <td> <%= activity.date.strftime("%d/%m/%Y") %> </td>
+            <td> <%= activity.description %> </td>
+        
+            <td>
+                <%= button_to 'Apagar', 
+                    activity, 
+                    method: :delete, 
+                    :onclick => "return confirm('Tem certeza que quer deletar esta atividade?')" %>
+            </td>
+        </tr>
+    <% end %>
+</table>
 
